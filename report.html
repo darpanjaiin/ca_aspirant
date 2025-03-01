@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Winning Strategy - CA Exam Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: white;
+        }
+    </style>
+</head>
+<body class="h-full">
+    <div class="relative isolate px-6 pt-14 lg:px-8">
+        <!-- Top gradient blur -->
+        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[41.5125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] from-40% via-[#9089fc] via-70% to-[#3b82f6] opacity-25 sm:left-[calc(50%-30rem)] sm:w-[73.96875rem] animate-pulse" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+        </div>
+
+        <!-- Middle gradient blur -->
+        <div class="absolute inset-x-0 top-[calc(50%-500px)] -z-10 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
+            <div class="relative left-[calc(50%)] aspect-[1155/678] w-[36.1125rem] -translate-x-1/2 rotate-[15deg] bg-gradient-to-tr from-[#ff80b5] from-40% via-[#9089fc] via-70% to-[#3b82f6] opacity-20 animate-pulse" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+        </div>
+
+        <!-- Main content -->
+        <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">Your Winning Strategy</h1>
+                <p class="text-xl text-gray-600 mb-8">Failing to plan is planning to fail. We've got you covered.</p>
+                <div class="text-6xl mb-8">🚀</div>
+                <p class="text-2xl font-semibold text-gray-700">Coming Soon</p>
+            </div>
+        </div>
+
+        <!-- Bottom gradient blur -->
+        <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+            <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[41.5125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] from-40% via-[#9089fc] via-70% to-[#3b82f6] opacity-25 sm:left-[calc(50%+36rem)] sm:w-[73.96875rem] animate-pulse" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+        </div>
+    </div>
+
+    <script>
+        // Check if user data exists
+        document.addEventListener('DOMContentLoaded', function() {
+            const userAnswers = localStorage.getItem('userAnswers');
+            if (!userAnswers) {
+                window.location.href = 'questionnaire.html';
+            }
+        });
+    </script>
+</body>
+</html> 
