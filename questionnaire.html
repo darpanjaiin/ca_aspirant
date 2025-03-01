@@ -809,12 +809,27 @@
                 const item = document.createElement('div');
                 item.className = 'summary-item';
                 
-                const formattedValue = key === 'leave_start_date' ? formatDate(value) : value;
+                let displayValue = value;
+                
+                // Special handling for subjects
+                if (key === 'subjects') {
+                    const group1Subjects = value.group1.join(', ');
+                    const group2Subjects = value.group2.join(', ');
+                    displayValue = `Group 1: ${group1Subjects}\nGroup 2: ${group2Subjects}`;
+                } else {
+                    displayValue = key === 'leave_start_date' ? formatDate(value) : value;
+                }
                 
                 item.innerHTML = `
                     <span class="summary-label">${getQuestionText(key)}:</span>
-                    <span class="summary-value">${formattedValue}</span>
+                    <span class="summary-value">${displayValue}</span>
                 `;
+                
+                // Add special styling for subjects to handle line breaks
+                if (key === 'subjects') {
+                    item.querySelector('.summary-value').style.whiteSpace = 'pre-line';
+                }
+                
                 summaryList.appendChild(item);
             });
 
