@@ -89,22 +89,22 @@
         
         /* Continue button styles */
         .button {
-            text-decoration: none;
-            line-height: 1;
-            border-radius: 1.5rem;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 10px 10px 20px rgba(0,0,0,.05);
-            background-color: #fff;
-            color: #121212;
+            font-family: inherit;
+            font-size: 20px;
+            background: rgb(0, 0, 0);
+            color: white;
+            margin-top: 20px;
+            padding: 0.7em 1em;
+            padding-left: 0.9em;
+            display: flex;
+            align-items: center;
             border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.2s;
             cursor: pointer;
-            margin-top: 2rem;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
-            display: inline-flex;
-            align-items: center;
         }
 
         .button.visible {
@@ -112,64 +112,42 @@
             pointer-events: auto;
         }
 
-        .button-decor {
-            position: absolute;
-            inset: 0;
-            background-color: var(--clr);
-            transform: translateX(-100%);
-            transition: transform .3s;
-            z-index: 0;
+        .button span {
+            display: block;
+            margin-left: 0.3em;
+            transition: all 0.3s ease-in-out;
         }
 
-        .button-content {
-            display: flex;
-            align-items: center;
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+        .button svg {
+            display: block;
+            transform-origin: center center;
+            transition: transform 0.3s ease-in-out;
         }
 
-        .button__icon {
-            width: 48px;
-            height: 40px;
-            background-color: var(--clr);
-            display: grid;
-            place-items: center;
-            position: relative;
-            z-index: 1;
+        .button:hover .svg-wrapper {
+            animation: fly-1 0.6s ease-in-out infinite alternate;
         }
 
-        .button__icon svg {
-            width: 24px;
-            height: 24px;
-            transition: transform 0.3s ease;
+        .button:hover svg {
+            transform: translateX(1.2em) rotate(45deg) scale(1.1);
         }
 
-        .button__text {
-            display: inline-block;
-            transition: color .2s;
-            padding: 2px 1.5rem 2px;
-            padding-left: .75rem;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            max-width: 150px;
-            font-size: 16px;
-            position: relative;
-            z-index: 1;
+        .button:hover span {
+            transform: translateX(5em);
         }
 
-        .button:hover .button__text {
-            color: #fff;
+        .button:active {
+            transform: scale(0.95);
         }
 
-        .button:hover .button-decor {
-            transform: translate(0);
-        }
+        @keyframes fly-1 {
+            from {
+                transform: translateY(0.1em);
+            }
 
-        .button:hover .button__icon svg {
-            transform: rotate(360deg) scale(1.2);
+            to {
+                transform: translateY(-0.1em);
+            }
         }
 
         /* Remove old continue button styles */
@@ -339,10 +317,59 @@
             opacity: 0.9;
             transform: translateY(-1px);
         }
+
+        /* Subject selection styles */
+        .subject-groups {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .subject-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .subject-checkbox {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(156, 163, 175, 0.5);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .subject-checkbox:hover {
+            border-color: #7a5af8;
+            background-color: rgba(122, 90, 248, 0.05);
+        }
+
+        .subject-checkbox.selected {
+            border-color: #7a5af8;
+            background-color: rgba(122, 90, 248, 0.1);
+        }
+
+        .subject-checkbox input[type="checkbox"] {
+            margin-right: 0.75rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 0.25rem;
+            border-color: rgba(156, 163, 175, 0.5);
+            cursor: pointer;
+        }
+
+        .subject-checkbox label {
+            flex: 1;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #1a202c;
+        }
     </style>
 </head>
 <body>
-    <!-- Question Page 1 -->
+    <!-- Question Page 1 - CA Final/Inter -->
     <div id="question1" class="page question-page active">
         <div class="relative isolate w-full">
             <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
@@ -361,28 +388,16 @@
                     </button>
                 </div>
                 
-                <button id="question1-continue" class="button question-continue-button" data-next="question2" style="--clr: #00ad54">
-                    <span class="button-decor"></span>
-                    <div class="button-content">
-                        <div class="button__icon">
-                            <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" width="24">
-                                <circle opacity="0.5" cx="25" cy="25" r="23" fill="url(#icon-gradient)"></circle>
-                                <mask id="icon-mask">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M34.42 15.93c.382-1.145-.706-2.234-1.851-1.852l-18.568 6.189c-1.186.395-1.362 2-.29 2.644l5.12 3.072a1.464 1.464 0 001.733-.167l5.394-4.854a1.464 1.464 0 011.958 2.177l-5.154 4.638a1.464 1.464 0 00-.276 1.841l3.101 5.17c.644 1.072 2.25.896 2.645-.29L34.42 15.93z">
-                                </path>
-                            </mask>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M34.42 15.93c.382-1.145-.706-2.234-1.851-1.852l-18.568 6.189c-1.186.395-1.362 2-.29 2.644l5.12 3.072a1.464 1.464 0 001.733-.167l5.394-4.854a1.464 1.464 0 011.958 2.177l-5.154 4.638a1.464 1.464 0 00-.276 1.841l3.101 5.17c.644 1.072 2.25.896 2.645-.29L34.42 15.93z" fill="#fff"></path>
-                            <path d="M25.958 20.962l-1.47-1.632 1.47 1.632zm2.067.109l-1.632 1.469 1.632-1.469zm-.109 2.068l-1.469-1.633 1.47 1.633zm-5.154 4.638l-1.469-1.632 1.469 1.632zm-.276 1.841l-1.883 1.13 1.883-1.13zM34.42 15.93l-2.084-.695 2.084.695zm-19.725 6.42l18.568-6.189-1.39-4.167-18.567 6.19 1.389 4.166zm5.265 1.75l-5.12-3.072-2.26 3.766 5.12 3.072 2.26-3.766zm2.072 3.348l5.394-4.854-2.938-3.264-5.394 4.854 2.938 3.264zm5.394-4.854a.732.732 0 01-1.034-.054l3.265-2.938a3.66 3.66 0 00-5.17-.272l2.939 3.265zm-1.034-.054a.732.732 0 01.054-1.034l2.938 3.265a3.66 3.66 0 00.273-5.169l-3.265 2.938zm.054-1.034l-5.154 4.639 2.938 3.264 5.154-4.638-2.938-3.265zm1.023 12.152l-3.101-5.17-3.766 2.26 3.101 5.17 3.766-2.26zm4.867-18.423l-6.189 18.568 4.167 1.389 6.19-18.568-4.168-1.389zm-8.633 20.682c1.61 2.682 5.622 2.241 6.611-.725l-4.167-1.39a.732.732 0 011.322-.144l-3.766 2.26zm-6.003-8.05a3.66 3.66 0 004.332-.419l-2.938-3.264a.732.732 0 01.866-.084l-2.26 3.766zm3.592-1.722a3.66 3.66 0 00-.69 4.603l3.766-2.26c.18.301.122.687-.138.921l-2.938-3.264zm11.97-9.984a.732.732 0 01-.925-.926l4.166 1.389c.954-2.861-1.768-5.583-4.63-4.63l1.39 4.167zm-19.956 2.022c-2.967.99-3.407 5.003-.726 6.611l2.26-3.766a.732.732 0 01-.145 1.322l-1.39-4.167z" fill="#fff" mask="url(#icon-mask)"></path>
-                            <defs>
-                                <linearGradient id="icon-gradient" x1="25" y1="2" x2="25" y2="48" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#fff" stop-opacity="0.71"></stop>
-                                    <stop offset="1" stop-color="#fff" stop-opacity="0"></stop>
-                                </linearGradient>
-                            </defs>
-                        </svg>
+                <button id="question1-continue" class="button question-continue-button" data-next="question2">
+                    <div class="svg-wrapper-1">
+                        <div class="svg-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                            </svg>
                         </div>
-                        <span class="button__text">Continue</span>
                     </div>
+                    <span>Continue</span>
                 </button>
             </div>
             
@@ -392,7 +407,7 @@
         </div>
     </div>
     
-    <!-- Question Page 2 - When is your attempt due -->
+    <!-- Question Page 2 - Attempt Due -->
     <div id="question2" class="page question-page">
         <div class="relative isolate w-full">
             <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
@@ -417,18 +432,16 @@
                     </button>
                 </div>
                 
-                <button id="question2-continue" class="button question-continue-button" data-next="question3" style="--clr: #00ad54">
-                    <span class="button-decor"></span>
-                    <div class="button-content">
-                        <div class="button__icon">
-                            <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" width="24">
-                                <use href="#icon-gradient"/>
-                                <circle opacity="0.5" cx="25" cy="25" r="23" fill="url(#icon-gradient)"></circle>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M34.42 15.93c.382-1.145-.706-2.234-1.851-1.852l-18.568 6.189c-1.186.395-1.362 2-.29 2.644l5.12 3.072a1.464 1.464 0 001.733-.167l5.394-4.854a1.464 1.464 0 011.958 2.177l-5.154 4.638a1.464 1.464 0 00-.276 1.841l3.101 5.17c.644 1.072 2.25.896 2.645-.29L34.42 15.93z" fill="#fff"></path>
+                <button id="question2-continue" class="button question-continue-button" data-next="question3">
+                    <div class="svg-wrapper-1">
+                        <div class="svg-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
                             </svg>
                         </div>
-                        <span class="button__text">Continue</span>
                     </div>
+                    <span>Continue</span>
                 </button>
             </div>
             
@@ -438,7 +451,7 @@
         </div>
     </div>
     
-    <!-- Question Page 3 - What's your weak area -->
+    <!-- Question Page 3 - Weak area -->
     <div id="question3" class="page question-page">
         <div class="relative isolate w-full">
             <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
@@ -460,18 +473,16 @@
                     </button>
                 </div>
                 
-                <button id="question3-continue" class="button question-continue-button" data-next="question4" style="--clr: #00ad54">
-                    <span class="button-decor"></span>
-                    <div class="button-content">
-                        <div class="button__icon">
-                            <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" width="24">
-                                <use href="#icon-gradient"/>
-                                <circle opacity="0.5" cx="25" cy="25" r="23" fill="url(#icon-gradient)"></circle>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M34.42 15.93c.382-1.145-.706-2.234-1.851-1.852l-18.568 6.189c-1.186.395-1.362 2-.29 2.644l5.12 3.072a1.464 1.464 0 001.733-.167l5.394-4.854a1.464 1.464 0 011.958 2.177l-5.154 4.638a1.464 1.464 0 00-.276 1.841l3.101 5.17c.644 1.072 2.25.896 2.645-.29L34.42 15.93z" fill="#fff"></path>
+                <button id="question3-continue" class="button question-continue-button" data-next="question4">
+                    <div class="svg-wrapper-1">
+                        <div class="svg-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
                             </svg>
                         </div>
-                        <span class="button__text">Continue</span>
                     </div>
+                    <span>Continue</span>
                 </button>
             </div>
             
@@ -481,44 +492,8 @@
         </div>
     </div>
     
-    <!-- Question Page 4 - Office leave start date -->
+    <!-- Question Page 4 - What feels natural to you -->
     <div id="question4" class="page question-page">
-        <div class="relative isolate w-full">
-            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-            </div>
-            
-            <div class="question-wrapper">
-                <h1 class="question-title">Office leave start date</h1>
-                <p class="text-lg text-gray-600 mb-4">Please enter the date here</p>
-                
-                <div class="options-container" data-question="leave_start_date">
-                    <input type="date" id="leave-date" class="date-input" data-question="leave_start_date">
-                </div>
-                
-                <button id="question4-continue" class="button question-continue-button" data-next="question5" style="--clr: #00ad54">
-                    <span class="button-decor"></span>
-                    <div class="button-content">
-                        <div class="button__icon">
-                            <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" width="24">
-                                <use href="#icon-gradient"/>
-                                <circle opacity="0.5" cx="25" cy="25" r="23" fill="url(#icon-gradient)"></circle>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M34.42 15.93c.382-1.145-.706-2.234-1.851-1.852l-18.568 6.189c-1.186.395-1.362 2-.29 2.644l5.12 3.072a1.464 1.464 0 001.733-.167l5.394-4.854a1.464 1.464 0 011.958 2.177l-5.154 4.638a1.464 1.464 0 00-.276 1.841l3.101 5.17c.644 1.072 2.25.896 2.645-.29L34.42 15.93z" fill="#fff"></path>
-                            </svg>
-                        </div>
-                        <span class="button__text">Continue</span>
-                    </div>
-                </button>
-            </div>
-            
-            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
-                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Question Page 5 - What comes natural to you -->
-    <div id="question5" class="page question-page">
         <div class="relative isolate w-full">
             <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
                 <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
@@ -536,18 +511,96 @@
                     </button>
                 </div>
                 
-                <button id="question5-continue" class="button question-continue-button" data-next="finish" style="--clr: #00ad54">
-                    <span class="button-decor"></span>
-                    <div class="button-content">
-                        <div class="button__icon">
-                            <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" width="24">
-                                <use href="#icon-gradient"/>
-                                <circle opacity="0.5" cx="25" cy="25" r="23" fill="url(#icon-gradient)"></circle>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M34.42 15.93c.382-1.145-.706-2.234-1.851-1.852l-18.568 6.189c-1.186.395-1.362 2-.29 2.644l5.12 3.072a1.464 1.464 0 001.733-.167l5.394-4.854a1.464 1.464 0 011.958 2.177l-5.154 4.638a1.464 1.464 0 00-.276 1.841l3.101 5.17c.644 1.072 2.25.896 2.645-.29L34.42 15.93z" fill="#fff"></path>
+                <button id="question4-continue" class="button question-continue-button" data-next="question5">
+                    <div class="svg-wrapper-1">
+                        <div class="svg-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
                             </svg>
                         </div>
-                        <span class="button__text">Get Your Personalized Plan</span>
                     </div>
+                    <span>Continue</span>
+                </button>
+            </div>
+            
+            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Question Page 5 - Subject Selection -->
+    <div id="question5" class="page question-page">
+        <div class="relative isolate w-full">
+            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+            </div>
+            
+            <div class="question-wrapper">
+                <h1 class="question-title">Which subjects are you appearing for?</h1>
+                
+                <div class="options-container" data-question="subjects">
+                    <div class="subject-groups">
+                        <div class="group-1 mb-8">
+                            <h2 class="text-xl font-semibold mb-4 text-gray-800">Group 1</h2>
+                            <div class="subject-options space-y-2" id="group1-subjects">
+                                <!-- Group 1 subjects will be populated dynamically -->
+                            </div>
+                        </div>
+                        <div class="group-2">
+                            <h2 class="text-xl font-semibold mb-4 text-gray-800">Group 2</h2>
+                            <div class="subject-options space-y-2" id="group2-subjects">
+                                <!-- Group 2 subjects will be populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="question5-continue" class="button question-continue-button" data-next="question6">
+                    <div class="svg-wrapper-1">
+                        <div class="svg-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <span>Continue</span>
+                </button>
+            </div>
+            
+            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Question Page 6 - Office leave start date -->
+    <div id="question6" class="page question-page">
+        <div class="relative isolate w-full">
+            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+            </div>
+            
+            <div class="question-wrapper">
+                <h1 class="question-title">Office leave start date</h1>
+                <p class="text-lg text-gray-600 mb-4">Please enter the date here</p>
+                
+                <div class="options-container" data-question="leave_start_date">
+                    <input type="date" id="leave-date" class="date-input" data-question="leave_start_date">
+                </div>
+                
+                <button id="question6-continue" class="button question-continue-button" data-next="finish">
+                    <div class="svg-wrapper-1">
+                        <div class="svg-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <span>Get Your Personalized Plan</span>
                 </button>
             </div>
             
@@ -770,6 +823,111 @@
             localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
             showSummaryModal();
         }
+
+        // Subject lists
+        const finalSubjects = {
+            group1: ['All Group 1', 'Financial Reporting', 'Strategic Financial Management', 'Advanced Auditing'],
+            group2: ['All Group 2', 'Direct Taxes', 'Indirect Taxes, Customs & FTP', 'IBS']
+        };
+
+        const intermediateSubjects = {
+            group1: ['All Group 1', 'Advanced Accounting', 'Corporate and other Laws', 'Taxation'],
+            group2: ['All Group 2', 'Cost & Management Accounting', 'Auditing', 'Financial Management & Strategic Management']
+        };
+
+        // Function to create subject checkboxes
+        function createSubjectCheckboxes(examType) {
+            const subjects = examType === 'CA Final' ? finalSubjects : intermediateSubjects;
+            const group1Container = document.getElementById('group1-subjects');
+            const group2Container = document.getElementById('group2-subjects');
+            
+            // Clear existing options
+            group1Container.innerHTML = '';
+            group2Container.innerHTML = '';
+
+            // Create Group 1 subjects
+            subjects.group1.forEach((subject, index) => {
+                const div = document.createElement('div');
+                div.className = 'subject-checkbox';
+                div.innerHTML = `
+                    <input type="checkbox" id="subject-${index}" value="${subject}" 
+                           data-group="1" ${index === 0 ? 'data-all="true"' : ''}>
+                    <label for="subject-${index}">${subject}</label>
+                `;
+                group1Container.appendChild(div);
+            });
+
+            // Create Group 2 subjects
+            subjects.group2.forEach((subject, index) => {
+                const div = document.createElement('div');
+                div.className = 'subject-checkbox';
+                div.innerHTML = `
+                    <input type="checkbox" id="subject-g2-${index}" value="${subject}" 
+                           data-group="2" ${index === 0 ? 'data-all="true"' : ''}>
+                    <label for="subject-g2-${index}">${subject}</label>
+                `;
+                group2Container.appendChild(div);
+            });
+
+            // Add event listeners
+            document.querySelectorAll('.subject-checkbox input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const group = this.dataset.group;
+                    const isAll = this.dataset.all === 'true';
+                    const container = group === '1' ? group1Container : group2Container;
+                    
+                    if (isAll) {
+                        // If "All" is checked/unchecked, update all checkboxes in the group
+                        container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                            cb.checked = this.checked;
+                            cb.closest('.subject-checkbox').classList.toggle('selected', this.checked);
+                        });
+                    } else {
+                        // Update individual checkbox
+                        this.closest('.subject-checkbox').classList.toggle('selected', this.checked);
+                        
+                        // Update "All" checkbox based on other selections
+                        const allCheckbox = container.querySelector('input[data-all="true"]');
+                        const otherCheckboxes = Array.from(container.querySelectorAll('input[type="checkbox"]:not([data-all="true"])'));
+                        const allChecked = otherCheckboxes.every(cb => cb.checked);
+                        
+                        allCheckbox.checked = allChecked;
+                        allCheckbox.closest('.subject-checkbox').classList.toggle('selected', allChecked);
+                    }
+
+                    // Store selected subjects
+                    const selectedSubjects = {
+                        group1: Array.from(group1Container.querySelectorAll('input[type="checkbox"]:checked:not([data-all="true"])'))
+                            .map(cb => cb.value),
+                        group2: Array.from(group2Container.querySelectorAll('input[type="checkbox"]:checked:not([data-all="true"])'))
+                            .map(cb => cb.value)
+                    };
+                    
+                    userAnswers.subjects = selectedSubjects;
+                    localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
+
+                    // Show continue button if at least one subject is selected
+                    const continueButton = document.querySelector('#question6-continue');
+                    const hasSelection = selectedSubjects.group1.length > 0 || selectedSubjects.group2.length > 0;
+                    if (continueButton) {
+                        continueButton.classList.toggle('visible', hasSelection);
+                    }
+                });
+            });
+        }
+
+        // Update the navigateToPage function to handle subject selection
+        const originalNavigateToPage = navigateToPage;
+        navigateToPage = function(pageId) {
+            originalNavigateToPage(pageId);
+            
+            if (pageId === 'question6') {
+                const examType = userAnswers.exam_type;
+                if (examType) {
+                    createSubjectCheckboxes(examType);
+                }
+            }
+        };
     </script>
 </body>
 </html> 

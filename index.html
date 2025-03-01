@@ -227,69 +227,59 @@
           }
         }
 
-        /* From Uiverse.io by Javierrocadev */ 
+        /* From Uiverse.io by adamgiebl */ 
         .get-started-btn {
-            position: relative;
-            height: 4rem;
-            width: 10.5rem;
-            background-color: rgb(0, 0, 0);
-            border: 1px solid currentColor;
-            text-align: left;
-            padding: 0.75rem;
-            color: rgb(249 250 251);
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 20px;
+            background: rgb(0, 0, 0);
+            color: white;
+            padding: 0.7em 1em;
+            padding-left: 0.9em;
+            display: flex;
+            align-items: center;
+            border: none;
+            border-radius: 16px;
             overflow: hidden;
-            transition-duration: 500ms;
-            text-underline-offset: 2px;
+            transition: all 0.2s;
+            cursor: pointer;
         }
 
-        .get-started-btn::before {
-            content: '';
-            position: absolute;
-            width: 3rem;
-            height: 3rem;
-            right: 0.25rem;
-            top: 0.25rem;
-            z-index: 10;
-            background-color: rgb(139 92 246);
-            border-radius: 9999px;
-            filter: blur(8px);
-            transition-duration: 500ms;
+        .get-started-btn span {
+            display: block;
+            margin-left: 0.3em;
+            transition: all 0.3s ease-in-out;
         }
 
-        .get-started-btn::after {
-            content: '';
-            position: absolute;
-            z-index: 10;
-            width: 5rem;
-            height: 5rem;
-            background-color: rgb(253 164 175);
-            right: 2rem;
-            top: 0.75rem;
-            border-radius: 9999px;
-            filter: blur(8px);
-            transition-duration: 500ms;
+        .get-started-btn svg {
+            display: block;
+            transform-origin: center center;
+            transition: transform 0.3s ease-in-out;
         }
 
-        .get-started-btn:hover {
-            border-color: rgb(253 164 175);
-            text-decoration: underline;
-            text-underline-offset: 4px;
-            text-decoration-thickness: 2px;
-            color: rgb(253 164 175);
+        .get-started-btn:hover .svg-wrapper {
+            animation: fly-1 0.6s ease-in-out infinite alternate;
         }
 
-        .get-started-btn:hover::before {
-            right: 3rem;
-            bottom: -2rem;
-            filter: blur(8px);
-            box-shadow: 20px 20px 20px 30px #a21caf;
+        .get-started-btn:hover svg {
+            transform: translateX(1.2em) rotate(45deg) scale(1.1);
         }
 
-        .get-started-btn:hover::after {
-            right: -2rem;
+        .get-started-btn:hover span {
+            transform: translateX(5em);
+        }
+
+        .get-started-btn:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes fly-1 {
+            from {
+                transform: translateY(0.1em);
+            }
+
+            to {
+                transform: translateY(-0.1em);
+            }
         }
 
         /* Animated Background Elements */
@@ -383,11 +373,11 @@
 
         <div class="relative isolate px-6 pt-14 lg:px-8">
             <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[46.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] from-40% via-[#9089fc] via-70% to-[#3b82f6] opacity-25 sm:left-[calc(50%-30rem)] sm:w-[82.1875rem] animate-pulse" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[41.5125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] from-40% via-[#9089fc] via-70% to-[#3b82f6] opacity-25 sm:left-[calc(50%-30rem)] sm:w-[73.96875rem] animate-pulse" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
             </div>
 
             <div class="absolute inset-x-0 top-[calc(50%-500px)] -z-10 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
-                <div class="relative left-[calc(50%)] aspect-[1155/678] w-[40.125rem] -translate-x-1/2 rotate-[15deg] bg-gradient-to-tr from-[#ff80b5] from-40% via-[#9089fc] via-70% to-[#3b82f6] opacity-20 animate-pulse" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                <div class="relative left-[calc(50%)] aspect-[1155/678] w-[36.1125rem] -translate-x-1/2 rotate-[15deg] bg-gradient-to-tr from-[#ff80b5] from-40% via-[#9089fc] via-70% to-[#3b82f6] opacity-20 animate-pulse" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
             </div>
             
             <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
@@ -400,15 +390,23 @@
                     <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Clear winning strategy for CA exams</h1>
                     <p class="mt-6 text-lg leading-8 text-gray-600">Approved and created by Chartered Accountants who have crushed it, lived it and won it. This is free forever.</p>
                     <div class="mt-10 flex items-center justify-center gap-x-6">
-                        <button class="get-started-btn group" onclick="window.location.href='questionnaire.html'">
-                            Start
+                        <button class="get-started-btn" onclick="window.location.href='questionnaire.html'">
+                            <div class="svg-wrapper-1">
+                                <div class="svg-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                        <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span>Start</span>
                         </button>
                     </div>
                 </div>
             </div>
             
             <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
-                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[46.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] from-40% via-[#9089fc] via-70% to-[#3b82f6] opacity-25 sm:left-[calc(50%+36rem)] sm:w-[82.1875rem] animate-pulse" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[41.5125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] from-40% via-[#9089fc] via-70% to-[#3b82f6] opacity-25 sm:left-[calc(50%+36rem)] sm:w-[73.96875rem] animate-pulse" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
             </div>
         </div>
     </div>
