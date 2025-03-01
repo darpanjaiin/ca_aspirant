@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CA Exam Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .question-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .question-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            line-height: 1.2;
+            color: #1a202c;
+        }
+        
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 600px;
+            align-items: center;
+            margin: 0 auto;
+        }
+        
+        .option-button {
+            background-color: transparent;
+            color: #1a202c;
+            border-radius: 9999px;
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid rgba(156, 163, 175, 0.5);
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+        
+        .option-button:hover {
+            border-color: #7a5af8;
+            background-color: rgba(122, 90, 248, 0.05);
+        }
+        
+        .option-button.selected {
+            border-color: #7a5af8;
+            background-color: rgba(122, 90, 248, 0.1);
+        }
+        
+        .continue-button {
+            margin-top: 2rem;
+            background-color: #7a5af8;
+            color: white;
+            border-radius: 0.375rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .continue-button.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .continue-button:hover {
+            background-color: #6c4ae3;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        // Store answers in localStorage
+        let currentQuestionId = "preparation_level";
+        let userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || {};
+        
+        function selectOption(button) {
+            // Reset all buttons
+            document.querySelectorAll('.option-button').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Select the clicked button
+            button.classList.add('selected');
+            let selectedOption = button.textContent.trim();
+            
+            // Save the answer
+            userAnswers[currentQuestionId] = selectedOption;
+            localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
+            
+            // Show continue button
+            document.getElementById('continueBtn').classList.add('visible');
+        }
+        
+        function nextQuestion() {
+            // Redirect to text_column page
+            window.location.href = 'text_column.html?source=question2';
+        }
+    </script>
+</body>
+</html> 
